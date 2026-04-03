@@ -1,0 +1,155 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 林子今天做什么
+subtitle: '记录每一天的生活点滴'
+description: '林子的每日日程博客，记录工作、学习、生活的每一天。分享时间管理心得，记录生活点滴。'
+keywords: 日程,时间管理,博客,林子,每日记录,生活记录
+author: 林子
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+url: http://firetip.site
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: 日程
+category_map:
+tag_map:
+
+# Metadata elements
+meta_generator: true
+
+# Date / Time format
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: 'mtime'
+
+# Pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+include:
+exclude:
+ignore:
+
+# Extensions
+theme: landscape
+
+# Deployment
+deploy:
+  type: ''
+
+# SEO优化
+sitemap:
+  path: sitemap.xml
+template: ./sitemap_template.xml
+
+# 自动生成分类和标签索引
+archive_generator:
+  per_page: 10
+  yearly: true
+  monthly: true
+  order_by: -date
+
+category_generator:
+  per_page: 10
+  order_by: -date
+
+tag_generator:
+  per_page: 10
+  order_by: -date
+
+# Feed生成
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+# Robots.txt
+robotstxt:
+  useragent: '*'
+  allow:
+    - /
+  disallow:
+    - /js/
+    - /css/
+    - /fonts/
+  sitemap: http://firetip.site/sitemap.xml
+
+# Markdown渲染设置
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '""'''
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ¶
