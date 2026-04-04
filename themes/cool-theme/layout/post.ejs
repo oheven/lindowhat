@@ -1,0 +1,94 @@
+<article class="post-card">
+    <header class="post-header">
+        <h1><%= page.title %></h1>
+        <div class="post-meta">
+            <span>📅 <%= page.date.format('YYYY-MM-DD HH:mm') %></span>
+            <% if (page.categories && page.categories.length) { %>
+            <span>📂 <%= page.categories.map(cat => cat.name).join(', ') %></span>
+            <% } %>
+        </div>
+    </header>
+    
+    <div class="post-content">
+        <%- page.content %>
+    </div>
+    
+    <% if (page.tags && page.tags.length) { %>
+    <div class="tags">
+        <% page.tags.each(function(tag) { %>
+        <a class="tag" href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+        <% }) %>
+    </div>
+    <% } %>
+    
+    <nav class="post-nav">
+        <% if (page.prev) { %>
+        <a href="<%- url_for(page.prev.path) %>" class="nav-prev">← <%= page.prev.title %></a>
+        <% } %>
+        <% if (page.next) { %>
+        <a href="<%- url_for(page.next.path) %>" class="nav-next"><%= page.next.title %> →</a>
+        <% } %>
+    </nav>
+</article>
+
+<style>
+.post-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-header h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.post-content {
+    line-height: 1.9;
+}
+
+.post-content h2 {
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+    color: var(--text-primary);
+}
+
+.post-content h3 {
+    font-size: 1.2rem;
+    margin: 30px 0 16px;
+}
+
+.post-content p {
+    margin: 16px 0;
+    color: var(--text-secondary);
+}
+
+.post-content ul, .post-content ol {
+    margin: 16px 0;
+    padding-left: 24px;
+    color: var(--text-secondary);
+}
+
+.post-content li {
+    margin: 8px 0;
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.post-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.post-nav a:hover {
+    color: var(--accent-secondary);
+}
+</style>

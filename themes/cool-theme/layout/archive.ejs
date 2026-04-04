@@ -1,0 +1,59 @@
+<div class="post-list">
+    <% page.posts.each(function(post, index) { %>
+    <article class="post-card" style="--index: <%= index %>">
+        <h2>
+            <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h2>
+        <div class="post-meta">
+            <span>📅 <%= post.date.format('YYYY-MM-DD') %></span>
+            <% if (page.category) { %>
+            <span>📂 <%= page.category %></span>
+            <% } %>
+        </div>
+        <div class="post-excerpt">
+            <% if (post.excerpt) { %>
+                <%- post.excerpt %>
+            <% } else { %>
+                <p><%= strip_html(post.content).substring(0, 180) %>...</p>
+            <% } %>
+        </div>
+    </article>
+    <% }) %>
+</div>
+
+<% if (page.total > 1) { %>
+<nav class="pagination">
+    <%- paginator({
+        prev_text: '← 上一页',
+        next_text: '下一页 →',
+        escape: false
+    }) %>
+</nav>
+<% } %>
+
+<style>
+h1.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: var(--text-primary);
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+.pagination a {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.pagination a:hover {
+    background: var(--accent);
+    color: white;
+}
+</style>
